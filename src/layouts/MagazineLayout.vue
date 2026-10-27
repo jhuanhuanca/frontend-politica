@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import AuthModal from '@/components/magazine/AuthModal.vue'
 import SiteHeader from '@/components/magazine/SiteHeader.vue'
 import TrendingBar from '@/components/magazine/TrendingBar.vue'
 import SiteFooter from '@/components/magazine/SiteFooter.vue'
@@ -44,4 +45,5 @@ function toTop(): void {
     <SiteFooter v-if="!isNoir" />
   </div>
   <button class="back-top" type="button" aria-label="Volver arriba" @click="toTop">↑</button>
+  <AuthModal />
 </template>

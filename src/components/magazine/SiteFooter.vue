@@ -83,6 +83,7 @@ const slideCount = computed(() => Math.min(catalog.hero.length, 4))
         <RouterLink to="/viejocracia">Viejocracia</RouterLink>
         <RouterLink to="/votaciones">Votaciones</RouterLink>
         <RouterLink to="/sugerencias">Sugerencias</RouterLink>
+        <RouterLink to="/privacidad">Privacidad</RouterLink>
       </nav>
     </div>
   </footer>

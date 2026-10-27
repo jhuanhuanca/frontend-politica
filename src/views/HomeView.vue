@@ -34,7 +34,7 @@ const categoryBlocks = computed(() => {
           <a class="yt" href="#" aria-label="YouTube" v-reveal="{ from: 'left', delay: 160 }">▶</a>
         </div>
         <WidgetBox title="Anuncio" from="left">
-          <AdSlot />
+          <AdSlot placement="left" />
         </WidgetBox>
         <WidgetBox title="Últimos debates" from="left" :delay="40">
           <PostListItem v-for="debate in catalog.latest.slice(0, 5)" :key="debate.id" :debate="debate" />
@@ -108,7 +108,7 @@ const categoryBlocks = computed(() => {
           </p>
         </WidgetBox>
         <WidgetBox title="Anuncio" from="right" :delay="120">
-          <AdSlot />
+          <AdSlot placement="right" />
         </WidgetBox>
       </aside>
     </div>

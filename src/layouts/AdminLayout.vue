@@ -29,6 +29,7 @@ async function logout(): Promise<void> {
           <RouterLink :to="{ name: 'admin-suggestions' }">Sugerencias</RouterLink>
           <RouterLink :to="{ name: 'admin-militants' }">Militantes</RouterLink>
           <RouterLink :to="{ name: 'admin-votes' }">Votos y firmas</RouterLink>
+          <RouterLink :to="{ name: 'admin-ads' }">Anuncios</RouterLink>
         </nav>
         <div class="admin-side__foot">
           <span class="admin-muted" style="margin: 0">{{ auth.user?.nick }}</span>

@@ -206,6 +206,19 @@ export interface AdminSignature {
   created_at: string
 }
 
+export type AdSlotName = 'left' | 'right'
+
+export interface Ad {
+  id: number
+  slot: AdSlotName
+  title: string | null
+  image_url: string | null
+  link_url: string | null
+  is_active: boolean
+  sort_order: number
+  created_at: string
+}
+
 export interface Paginated<T> {
   data: T[]
   meta?: {

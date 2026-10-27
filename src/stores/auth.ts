@@ -8,6 +8,8 @@ export const useAuthStore = defineStore('auth', () => {
   const user = ref<AuthUser | null>(null)
   const error = ref('')
   const loading = ref(false)
+  const authModalOpen = ref(false)
+  const authModalMode = ref<'login' | 'register'>('register')
 
   const isAuthenticated = computed(() => Boolean(token.value))
   const isAdmin = computed(() => Boolean(user.value?.is_admin))
@@ -46,11 +48,22 @@ export const useAuthStore = defineStore('auth', () => {
     }
   }
 
+  function openAuthModal(mode: 'login' | 'register' = 'register'): void {
+    authModalMode.value = mode
+    error.value = ''
+    authModalOpen.value = true
+  }
+
+  function closeAuthModal(): void {
+    authModalOpen.value = false
+  }
+
   async function register(payload: {
     nick: string
     email: string
     password: string
     department: string
+    privacy_accepted: boolean
   }): Promise<boolean> {
     loading.value = true
     error.value = ''
@@ -119,9 +132,13 @@ export const useAuthStore = defineStore('auth', () => {
     user,
     error,
     loading,
+    authModalOpen,
+    authModalMode,
     isAuthenticated,
     isAdmin,
     hydrate,
+    openAuthModal,
+    closeAuthModal,
     login,
     loginAdmin,
     register,

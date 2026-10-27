@@ -10,6 +10,7 @@ import type {
   Paginated,
   Suggestion,
   VoteTopic,
+  Ad,
 } from '@/types/models'
 
 export const useAdminStore = defineStore('admin', () => {
@@ -92,6 +93,27 @@ export const useAdminStore = defineStore('admin', () => {
     return data.data
   }
 
+  async function fetchAds(): Promise<Ad[]> {
+    const { data } = await api.get<{ data: Ad[] }>('/admin/ads')
+    return data.data
+  }
+
+  async function saveAd(form: FormData, id?: number): Promise<Ad> {
+    const { data } = id
+      ? await api.post<{ data: Ad }>(`/admin/ads/${id}`, form)
+      : await api.post<{ data: Ad }>('/admin/ads', form)
+    return data.data
+  }
+
+  async function updateAd(id: number, payload: Record<string, unknown>): Promise<Ad> {
+    const { data } = await api.patch<{ data: Ad }>(`/admin/ads/${id}`, payload)
+    return data.data
+  }
+
+  async function deleteAd(id: number): Promise<void> {
+    await api.delete(`/admin/ads/${id}`)
+  }
+
   async function rejectSuggestion(id: number, adminNote?: string): Promise<Suggestion> {
     const { data } = await api.post<{ data: Suggestion }>(`/admin/suggestions/${id}/reject`, {
       admin_note: adminNote || null,
@@ -121,6 +143,10 @@ export const useAdminStore = defineStore('admin', () => {
     fetchSuggestions,
     publishSuggestion,
     rejectSuggestion,
+    fetchAds,
+    saveAd,
+    updateAd,
+    deleteAd,
     setError,
   }
 })

@@ -31,11 +31,7 @@ function goAccount(): void {
     router.push('/sugerencias')
     return
   }
-  if (route.path !== '/') {
-    router.push({ path: '/', hash: 'login-widget' })
-    return
-  }
-  document.getElementById('login-widget')?.scrollIntoView({ behavior: 'smooth' })
+  auth.openAuthModal('login')
 }
 
 function isActive(to: string): boolean {

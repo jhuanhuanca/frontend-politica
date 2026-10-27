@@ -330,6 +330,56 @@ textarea {
       center / cover;
 }
 
+.ad-slot.has-ad {
+  background: #111;
+  padding: 0;
+}
+
+.ad-slot__link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.ad-slot__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ad-slot__dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 8px;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  pointer-events: none;
+}
+
+.ad-slot__dots span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.ad-slot__dots span.active {
+  background: #fff;
+}
+
+.ad-fade-enter-active,
+.ad-fade-leave-active {
+  transition: opacity 0.4s ease;
+}
+
+.ad-fade-enter-from,
+.ad-fade-leave-to {
+  opacity: 0;
+}
+
 .trending-bar {
   background: #f3f3f3;
   display: flex;
@@ -758,7 +808,8 @@ textarea {
   color: #555;
 }
 
-.consent-line input {
+.consent-line input,
+.auth-form .consent-line input {
   width: auto;
   margin: 3px 0 0;
   padding: 0;
@@ -1020,6 +1071,102 @@ textarea {
   background: #fff;
   border-radius: var(--radius);
   padding: 20px;
+}
+
+.auth-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 61, 145, 0.72);
+  z-index: 95;
+  display: grid;
+  place-items: start center;
+  padding: 8vh 16px 24px;
+  overflow: auto;
+}
+
+body.auth-modal-open {
+  overflow: hidden;
+}
+
+.auth-modal__card {
+  width: min(440px, 100%);
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 28px 24px 22px;
+  position: relative;
+}
+
+.auth-modal__card h2 {
+  margin: 0 0 8px;
+  font-size: 26px;
+  color: var(--navy);
+}
+
+.auth-modal__close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  border: 0;
+  background: transparent;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--navy);
+}
+
+.privacy-toggle,
+.auth-form .privacy-toggle {
+  display: inline;
+  width: auto;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.auth-form .privacy-toggle:hover {
+  background: none;
+  color: var(--navy);
+}
+
+.privacy-box,
+.privacy-section {
+  background: #f7f7f7;
+  border: 1px solid #ebebeb;
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  margin: 0 0 12px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.privacy-box p,
+.privacy-section p {
+  margin: 0 0 10px;
+}
+
+.privacy-box p:last-child,
+.privacy-section p:last-child {
+  margin-bottom: 0;
+}
+
+.privacy-section {
+  background: #fff;
+  margin: 18px 0;
+}
+
+.privacy-section h2 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  color: var(--navy);
 }
 
 .page-block {

@@ -1,11 +1,12 @@
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import { api } from '@/services/api'
-import type { Debate, DebateMessage, Paginated, VoteTopic } from '@/types/models'
+import type { Ad, AdSlotName, Debate, DebateMessage, Paginated, VoteTopic } from '@/types/models'
 
 export const useCatalogStore = defineStore('catalog', () => {
   const debates = ref<Debate[]>([])
   const topics = ref<VoteTopic[]>([])
+  const ads = ref<Ad[]>([])
   const loading = ref(false)
 
   const latest = computed(() => debates.value.slice(0, 8))
@@ -23,15 +24,21 @@ export const useCatalogStore = defineStore('catalog', () => {
     return debates.value.filter((item) => item.category === category).slice(0, limit)
   }
 
+  function adsBySlot(slot: AdSlotName): Ad[] {
+    return ads.value.filter((item) => item.slot === slot)
+  }
+
   async function fetchHome(): Promise<void> {
     loading.value = true
     try {
-      const [debatesRes, topicsRes] = await Promise.all([
+      const [debatesRes, topicsRes, adsRes] = await Promise.all([
         api.get<Paginated<Debate>>('/debates', { params: { per_page: 20 } }),
         api.get<Paginated<VoteTopic>>('/vote-topics'),
+        api.get<{ data: Ad[] }>('/ads').catch(() => ({ data: { data: [] } })),
       ])
       debates.value = debatesRes.data.data
       topics.value = topicsRes.data.data
+      ads.value = adsRes.data.data
     } finally {
       loading.value = false
     }
@@ -70,6 +77,7 @@ export const useCatalogStore = defineStore('catalog', () => {
   return {
     debates,
     topics,
+    ads,
     loading,
     latest,
     featured,
@@ -79,6 +87,7 @@ export const useCatalogStore = defineStore('catalog', () => {
     random,
     categories,
     byCategory,
+    adsBySlot,
     fetchHome,
     fetchDebate,
     fetchMessages,

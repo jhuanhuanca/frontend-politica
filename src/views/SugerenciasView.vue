@@ -49,7 +49,7 @@ async function loadMine(): Promise<void> {
 
 async function submit(): Promise<void> {
   if (!auth.isAuthenticated) {
-    error.value = 'Entrá con tu cuenta para sugerir un tema.'
+    auth.openAuthModal('register')
     return
   }
 
@@ -152,7 +152,7 @@ onMounted(loadMine)
               max="10000000"
               placeholder="Meta de firmas"
             />
-            <button type="submit" :disabled="sending || !auth.isAuthenticated">
+            <button type="submit" :disabled="sending">
               {{ sending ? 'Enviando…' : kind === 'debate' ? 'Sugerir debate' : 'Sugerir votación' }}
             </button>
           </form>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 import CommentItem from '@/components/magazine/CommentItem.vue'
 import MagazinePanel from '@/components/magazine/MagazinePanel.vue'
 import { useDebateRealtime } from '@/composables/useDebateRealtime'
@@ -11,7 +11,6 @@ import { validationMessage } from '@/services/api'
 import type { CommentThread, Debate, DebateMessage } from '@/types/models'
 
 const route = useRoute()
-const router = useRouter()
 const catalog = useCatalogStore()
 const auth = useAuthStore()
 const debate = ref<Debate | null>(null)
@@ -102,7 +101,18 @@ function buildThreads(list: DebateMessage[]): CommentThread[] {
   return roots.sort(newestFirst).map(nest)
 }
 
+function requireAccount(): boolean {
+  if (auth.isAuthenticated) {
+    return true
+  }
+  auth.openAuthModal('register')
+  return false
+}
+
 function toggleReply(message: DebateMessage): void {
+  if (!requireAccount()) {
+    return
+  }
   replyTo.value = replyTo.value?.id === message.id ? null : message
 }
 
@@ -111,8 +121,7 @@ function initial(nick: string): string {
 }
 
 async function publish(text: string, parentId: number | null = null): Promise<void> {
-  if (!auth.isAuthenticated) {
-    router.push({ path: '/', hash: 'login-widget' })
+  if (!requireAccount()) {
     return
   }
 

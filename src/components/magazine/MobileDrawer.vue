@@ -51,9 +51,19 @@ onUnmounted(() => {
             <RouterLink v-for="link in links" :key="link.to" :to="link.to" @click="emit('close')">
               {{ link.label }}
             </RouterLink>
-            <RouterLink :to="auth.user ? '/sugerencias' : '/#login-widget'" @click="emit('close')">
-              {{ auth.user ? auth.user.nick : 'Entrar' }}
+            <RouterLink v-if="auth.user" to="/sugerencias" @click="emit('close')">
+              {{ auth.user.nick }}
             </RouterLink>
+            <a
+              v-else
+              href="#entrar"
+              @click.prevent="
+                auth.openAuthModal('login')
+                emit('close')
+              "
+            >
+              Entrar
+            </a>
           </nav>
           <div class="drawer-foot">
             <div class="social-mini drawer-social">
