@@ -21,6 +21,10 @@ export default defineConfig(({ mode }) => {
           target: apiProxy,
           changeOrigin: true,
         },
+        '/uploads': {
+          target: apiProxy,
+          changeOrigin: true,
+        },
         '/storage': {
           target: apiProxy,
           changeOrigin: true,

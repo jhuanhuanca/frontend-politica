@@ -55,8 +55,9 @@ function apiOrigin(): string {
 export function rewriteMedia(url: string): string {
   try {
     const parsed = new URL(url, window.location.origin)
-    if (parsed.pathname.startsWith('/storage')) {
-      return `${apiOrigin()}${parsed.pathname}${parsed.search}`
+    if (parsed.pathname.startsWith('/uploads') || parsed.pathname.startsWith('/storage')) {
+      const path = parsed.pathname.replace(/^\/storage/, '/uploads')
+      return `${apiOrigin()}${path}${parsed.search}`
     }
   } catch {
     return url
