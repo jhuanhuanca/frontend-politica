@@ -147,7 +147,7 @@ onMounted(load)
             Imagen
             <input type="file" accept="image/*" required @change="onFile(space.key, $event)" />
           </label>
-          <img v-if="forms[space.key].preview" :src="forms[space.key].preview" alt="" class="admin-ad-preview" />
+          <img v-if="forms[space.key].preview" :src="forms[space.key].preview ?? undefined" alt="" class="admin-ad-preview" />
           <button class="admin-btn" type="submit" :disabled="savingSlot === space.key">
             {{ savingSlot === space.key ? 'Subiendo…' : 'Subir anuncio' }}
           </button>
