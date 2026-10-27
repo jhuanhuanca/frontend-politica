@@ -36,6 +36,11 @@ watch(
 onUnmounted(() => {
   document.body.classList.remove('drawer-open')
 })
+
+function openLogin(): void {
+  auth.openAuthModal('login')
+  emit('close')
+}
 </script>
 
 <template>
@@ -54,14 +59,7 @@ onUnmounted(() => {
             <RouterLink v-if="auth.user" to="/sugerencias" @click="emit('close')">
               {{ auth.user.nick }}
             </RouterLink>
-            <a
-              v-else
-              href="#entrar"
-              @click.prevent="
-                auth.openAuthModal('login')
-                emit('close')
-              "
-            >
+            <a v-else href="#entrar" @click.prevent="openLogin">
               Entrar
             </a>
           </nav>
