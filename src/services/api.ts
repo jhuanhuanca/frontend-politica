@@ -1,7 +1,7 @@
 import axios, { AxiosError } from 'axios'
 import { echoSocketId } from '@/services/echo'
 
-const TOKEN_KEY = 'viejocracia.token'
+const TOKEN_KEY = 'enagenda.token'
 
 export function getStoredToken(): string | null {
   return localStorage.getItem(TOKEN_KEY)

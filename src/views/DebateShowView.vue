@@ -184,8 +184,7 @@ async function sendReply(text: string, parentId: number): Promise<void> {
       <MagazinePanel :title="`La conversación · ${countLabel}`">
         <div class="comment-stage">
           <p class="comment-invite">
-            Primero leé el hilo. Después respondé o dejá tu argumento: el recambio se discute
-            entre todos, no desde una cúpula.
+            Primero leé la nota. Después sumá tu opinión: la conversación se construye entre todos.
           </p>
 
           <div v-if="!messages.length" class="comment-empty">

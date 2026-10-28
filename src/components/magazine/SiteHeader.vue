@@ -15,7 +15,6 @@ const searchOpen = ref(false)
 const links = [
   { to: '/', label: 'Inicio' },
   { to: '/debates', label: 'Debates' },
-  { to: '/viejocracia', label: 'Viejocracia' },
   { to: '/votaciones', label: 'Votaciones' },
   { to: '/sugerencias', label: 'Sugerencias' },
 ]
@@ -58,7 +57,9 @@ function isActive(to: string): boolean {
       </button>
 
       <div class="header-left">
-        <RouterLink to="/" class="logo">Viejo<span>cracia</span></RouterLink>
+        <RouterLink to="/" class="logo" aria-label="EnAgenda">
+          <img src="/brand/enagenda-logo.png" alt="EnAgenda" />
+        </RouterLink>
         <button
           class="header-icon-btn menu-toggle"
           type="button"

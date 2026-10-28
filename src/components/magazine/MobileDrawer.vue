@@ -16,7 +16,6 @@ const auth = useAuthStore()
 
 const links = [
   { to: '/debates', label: 'Debates' },
-  { to: '/viejocracia', label: 'Viejocracia' },
   { to: '/votaciones', label: 'Votaciones' },
   { to: '/sugerencias', label: 'Sugerencias' },
 ]

@@ -14,10 +14,14 @@ const COVERS = [
 ]
 
 export const CATEGORY_LABELS: Record<string, string> = {
+  debate: 'Debate',
   economia: 'Economía',
-  salud: 'Salud',
+  sociedad: 'Sociedad',
   educacion: 'Educación',
-  politica: 'Política',
+  innovacion: 'Innovación',
+  comunidad: 'Comunidad',
+  salud: 'Salud',
+  politica: 'Sociedad',
   seguridad: 'Seguridad',
   ambiente: 'Ambiente',
   infraestructura: 'Infraestructura',

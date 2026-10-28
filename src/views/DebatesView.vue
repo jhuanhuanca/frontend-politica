@@ -34,7 +34,7 @@ const heading = computed(() => {
   <div class="page-block">
     <div class="row">
       <MagazinePanel :title="heading">
-        <p v-if="!filtered.length">Todavía no hay debates abiertos. El recambio se discute acá: volvé pronto.</p>
+        <p v-if="!filtered.length">Todavía no hay debates en esta sección. Volvé pronto.</p>
         <div v-else class="metro">
           <OverlayCard v-for="debate in filtered" :key="debate.id" :debate="debate" />
         </div>

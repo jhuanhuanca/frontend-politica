@@ -9,7 +9,7 @@ import { PRIVACY_SECTIONS } from '@/content/privacy'
       <MagazinePanel title="Privacidad">
         <h1>Políticas de privacidad y recolección de datos</h1>
         <p>
-          Viejocracia es una plataforma de participación ciudadana. Esta política explica qué datos
+          EnAgenda es un diario digital de comunidad. Esta política explica qué datos
           pedimos al crear una cuenta, para qué los usamos y qué derechos tenés.
         </p>
         <section v-for="section in PRIVACY_SECTIONS" :key="section.title" class="privacy-section">

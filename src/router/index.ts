@@ -22,7 +22,7 @@ export const router = createRouter({
       component: MagazineLayout,
       children: [
         { path: '', name: 'home', component: HomeView },
-        { path: 'viejocracia', name: 'viejocracia', component: () => import('@/views/ViejocraciaView.vue'), meta: { theme: 'noir' } },
+        { path: 'viejocracia', redirect: { name: 'home' } },
         { path: 'debates', name: 'debates', component: DebatesView },
         { path: 'debates/:id', name: 'debate', component: DebateShowView },
         { path: 'votaciones', name: 'votaciones', component: VotacionesView },

@@ -9,7 +9,7 @@ const catalog = useCatalogStore()
 <template>
   <div class="page-block">
     <div class="row">
-      <MagazinePanel title="Campañas de firmas">
+      <MagazinePanel title="Votaciones">
         <div class="card-row">
           <article v-for="topic in catalog.topics" :key="topic.id" class="thumb-card">
             <RouterLink :to="`/votaciones/${topic.id}`">

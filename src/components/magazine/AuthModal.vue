@@ -23,7 +23,7 @@ function close(): void {
       <div class="auth-modal__card" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
         <button class="auth-modal__close" type="button" aria-label="Cerrar" @click="close">×</button>
         <h2 id="auth-modal-title">
-          {{ auth.authModalMode === 'register' ? 'Creá tu cuenta para comentar' : 'Entrá al debate' }}
+          {{ auth.authModalMode === 'register' ? 'Creá tu cuenta para comentar' : 'Entrá a EnAgenda' }}
         </h2>
         <p class="form-lead">
           {{

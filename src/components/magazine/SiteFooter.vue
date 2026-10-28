@@ -57,7 +57,7 @@ const slideCount = computed(() => Math.min(catalog.hero.length, 4))
       </div>
       <div class="footer-widget newsletter" v-reveal="{ delay: 240 }">
         <LedgerTitle title="Boletín" tag="h4" />
-        <p>Avisos de debates, firmas y llamados de Soberanía Creativa Responsable. Sin consigna vacía.</p>
+        <p>Debates, votaciones y firmas de la comunidad. Lo que pasa. Lo que piensas.</p>
         <form v-if="!joined" @submit.prevent="subscribe">
           <input v-model="email" type="email" placeholder="Tu email…" required />
           <button class="btn-accent" type="submit">Unirme</button>
@@ -76,11 +76,10 @@ const slideCount = computed(() => Math.min(catalog.hero.length, 4))
       </div>
     </div>
     <div class="row footer-bar" v-reveal="{ from: 'fade' }">
-      <span>© {{ new Date().getFullYear() }} Viejocracia. Participación ciudadana.</span>
+      <span>© {{ new Date().getFullYear() }} EnAgenda. Comunidad digital.</span>
       <nav>
         <RouterLink to="/">Inicio</RouterLink>
         <RouterLink to="/debates">Debates</RouterLink>
-        <RouterLink to="/viejocracia">Viejocracia</RouterLink>
         <RouterLink to="/votaciones">Votaciones</RouterLink>
         <RouterLink to="/sugerencias">Sugerencias</RouterLink>
         <RouterLink to="/privacidad">Privacidad</RouterLink>

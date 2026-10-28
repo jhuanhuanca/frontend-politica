@@ -81,7 +81,7 @@ function close(): void {
 }
 
 .share-card h3 {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 28px;
   margin: 0;
   letter-spacing: 0.03em;

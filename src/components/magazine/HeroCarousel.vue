@@ -10,7 +10,7 @@ defineProps<{
 <template>
   <section>
     <div v-if="!debates.length" class="row" style="padding: 40px 0; text-align: center; color: var(--muted)" v-reveal>
-      Todavía no hay debates abiertos. El código viejo se está craqueando: volvé pronto.
+      Todavía no hay debates en portada. Volvé en un rato.
     </div>
     <div v-else class="hero-strip">
       <OverlayCard

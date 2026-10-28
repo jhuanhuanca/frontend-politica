@@ -69,12 +69,12 @@ function switchMode(next: 'login' | 'register'): void {
 <template>
   <div v-if="auth.user" class="auth-form">
     <p>
-      Hola, <strong>{{ auth.user.nick }}</strong>. Ya estás dentro: debatí, firmá o
+      Hola, <strong>{{ auth.user.nick }}</strong>. Ya estás dentro: comentá, firmá o
       <RouterLink to="/sugerencias">sugerí un tema</RouterLink>.
     </p>
     <p v-if="auth.user.department" class="form-lead">Departamento: {{ auth.user.department }}</p>
     <form v-else @submit.prevent="saveDepartment">
-      <p class="form-lead">Falta tu departamento para el mapa de liderazgos.</p>
+        <p class="form-lead">Falta tu departamento para el mapa de la comunidad.</p>
       <p v-if="auth.error" class="form-error">{{ auth.error }}</p>
       <select v-model="department" required>
         <option value="" disabled>Departamento</option>

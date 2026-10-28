@@ -4,7 +4,7 @@ import WidgetBox from '@/components/magazine/WidgetBox.vue'
 </script>
 
 <template>
-  <WidgetBox id="login-widget" title="Entrá al debate" from="right">
+  <WidgetBox id="login-widget" title="Entrá a EnAgenda" from="right">
     <AuthForm />
   </WidgetBox>
 </template>

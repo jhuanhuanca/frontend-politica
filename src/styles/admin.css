@@ -27,7 +27,7 @@ body:has(.admin-login) {
 }
 
 .admin-login__card h1 {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 42px;
   letter-spacing: 0.04em;
   margin: 0 0 8px;
@@ -57,10 +57,15 @@ body:has(.admin-login) {
 }
 
 .admin-brand {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 28px;
-  letter-spacing: 0.06em;
-  color: #fff;
+  background: #fff;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.admin-brand img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .admin-nav {
@@ -107,7 +112,7 @@ body:has(.admin-login) {
 }
 
 .admin-main h1 {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 40px;
   margin: 0 0 8px;
   letter-spacing: 0.03em;
@@ -139,7 +144,7 @@ body:has(.admin-login) {
 
 .admin-card strong {
   display: block;
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 36px;
   color: var(--accent);
 }
@@ -152,7 +157,7 @@ body:has(.admin-login) {
 .admin-section-title,
 .admin-panel h2,
 .admin-highlight h2 {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 28px;
   letter-spacing: 0.03em;
   margin: 36px 0 12px;

@@ -121,14 +121,14 @@
 }
 
 @theme {
-  --font-sans: 'IBM Plex Sans Condensed', system-ui, sans-serif;
-  --font-display: 'Bebas Neue', 'IBM Plex Sans Condensed', sans-serif;
+  --font-sans: 'Montserrat', system-ui, sans-serif;
+  --font-display: 'Montserrat', system-ui, sans-serif;
   --color-ink: #1f2937;
   --color-navy: #0b3d91;
-  --color-accent: #0096d6;
-  --color-hot: #ff8a00;
+  --color-accent: #009ed6;
+  --color-hot: #ff6a00;
   --color-teal: #00b3a4;
-  --color-trend: #ff8a00;
+  --color-trend: #ff6a00;
   --color-page: #f4f7fb;
   --color-muted: #5b6b7c;
 }
@@ -136,10 +136,10 @@
 :root {
   --ink: #1f2937;
   --navy: #0b3d91;
-  --accent: #0096d6;
-  --hot: #ff8a00;
+  --accent: #009ed6;
+  --hot: #ff6a00;
   --teal: #00b3a4;
-  --trend: #ff8a00;
+  --trend: #ff6a00;
   --page: #f4f7fb;
   --muted: #5b6b7c;
   --radius: 6px;
@@ -153,19 +153,15 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
-  font-family: 'IBM Plex Sans Condensed', system-ui, sans-serif;
+  font-family: 'Montserrat', system-ui, sans-serif;
   line-height: 1.75;
   color: var(--ink);
-  background-color: var(--navy);
-  background-image: url('/fondos/fondo.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center top;
-  background-attachment: fixed;
+  background: #010409;
 }
 
 a {
@@ -185,17 +181,66 @@ textarea {
 }
 
 #app {
+  position: relative;
+  z-index: 1;
   min-height: 100svh;
   padding: 30px 24px 48px;
 }
 
+.hacker-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background: #010409;
+}
+
+.hacker-backdrop__rain {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hacker-backdrop__term {
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+  margin: 0;
+  color: #00b3a4;
+  font-family: Consolas, 'Courier New', monospace;
+  font-size: 12px;
+  line-height: 1.55;
+  text-shadow: 0 0 8px rgba(0, 179, 164, 0.7);
+  opacity: 0.72;
+  max-width: min(520px, 70vw);
+  white-space: pre-wrap;
+}
+
+.hacker-backdrop__scan {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.18) 0,
+      rgba(0, 0, 0, 0.18) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.55);
+}
+
 .site-shell {
+  position: relative;
+  z-index: 1;
   max-width: 1440px;
   margin: 0 auto;
-  background: var(--page);
+  background: #fff;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 12px 40px rgba(11, 61, 145, 0.18);
+  min-height: calc(100svh - 78px);
 }
 
 .site-header {
@@ -228,14 +273,19 @@ textarea {
 }
 
 .logo {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 36px;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  line-height: 1;
-  text-transform: uppercase;
-  color: #fff;
+  display: flex;
+  align-items: center;
   flex-shrink: 0;
+  background: #fff;
+  border-radius: 8px;
+  padding: 6px 10px;
+  height: 58px;
+}
+
+.logo img {
+  height: 46px;
+  width: auto;
+  display: block;
 }
 
 .logo span {
@@ -301,7 +351,8 @@ textarea {
 .ad-slot {
   background: var(--navy);
   border-radius: var(--radius);
-  min-width: 280px;
+  min-width: 0;
+  width: 100%;
   min-height: 70px;
   display: grid;
   place-items: center;
@@ -564,14 +615,36 @@ textarea {
   background: var(--accent);
 }
 
+.page-body,
+.page-block,
+main {
+  background: #fff;
+}
+
 .page-body {
   padding: 48px 0 24px;
 }
 
 .magazine-grid {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  gap: 40px;
+  grid-template-columns: minmax(200px, 1fr) minmax(0, 2.1fr) minmax(220px, 1fr);
+  grid-template-areas: 'left main right';
+  gap: 32px 28px;
+}
+
+.magazine-side--left {
+  grid-area: left;
+  min-width: 0;
+}
+
+.magazine-main {
+  grid-area: main;
+  min-width: 0;
+}
+
+.magazine-side--right {
+  grid-area: right;
+  min-width: 0;
 }
 
 .magazine-block {
@@ -593,7 +666,7 @@ textarea {
   flex: 0 0 auto;
   margin: 0;
   padding: 0 14px 0 0;
-  background: var(--page);
+  background: #fff;
   color: var(--ink);
   font-size: 16px;
   font-weight: 500;
@@ -1727,9 +1800,13 @@ body.drawer-open {
 }
 
 @media (max-width: 1280px) {
+  .row {
+    width: calc(100% - 40px);
+  }
+
   .header-ad {
-    width: 250px;
-    flex-basis: 250px;
+    width: 220px;
+    flex-basis: 220px;
     height: 50px;
   }
 
@@ -1738,14 +1815,82 @@ body.drawer-open {
     height: 50px;
     min-height: 50px;
   }
+
+  .magazine-grid {
+    gap: 24px;
+  }
 }
 
 @media (max-width: 1100px) {
-  .magazine-grid,
+  #app {
+    padding: 16px 12px 28px;
+  }
+
+  .header-main {
+    display: grid;
+    grid-template-columns: 42px 1fr 42px;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    max-width: none;
+    min-height: 64px;
+    padding: 10px 8px;
+  }
+
+  .header-search-btn,
+  .menu-toggle {
+    display: grid;
+  }
+
+  .header-left {
+    display: contents;
+  }
+
+  .logo {
+    justify-self: center;
+    height: 48px;
+    padding: 4px 8px;
+  }
+
+  .logo img {
+    height: 38px;
+  }
+
+  .header-ad,
+  .main-nav {
+    display: none !important;
+  }
+
+  .trending-bar {
+    gap: 10px;
+    min-height: 48px;
+    width: calc(100% - 24px);
+  }
+
+  .trending-label {
+    margin-left: 0;
+    padding: 12px 16px;
+    letter-spacing: 0.04em;
+  }
+
+  .header-tools .social-mini,
+  .ticker small {
+    display: none;
+  }
+
+  .magazine-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      'main main'
+      'left right';
+    gap: 20px;
+  }
+
   .footer-grid,
   .hero-strip,
   .featured-pair,
-  .card-row {
+  .card-row,
+  .split-page {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -1798,7 +1943,12 @@ body.drawer-open {
 
   .logo {
     justify-self: center;
-    font-size: 30px;
+    height: 48px;
+    padding: 4px 8px;
+  }
+
+  .logo img {
+    height: 38px;
   }
 
   .header-ad,
@@ -1839,7 +1989,15 @@ body.drawer-open {
     padding: 16px 0 8px;
   }
 
-  .magazine-grid,
+  .magazine-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'main'
+      'right'
+      'left';
+    gap: 16px;
+  }
+
   .footer-grid,
   .featured-pair,
   .metro,

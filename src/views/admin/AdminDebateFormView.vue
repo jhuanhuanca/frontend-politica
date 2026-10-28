@@ -18,7 +18,7 @@ const id = computed(() => {
 
 const title = ref('')
 const description = ref('')
-const category = ref('politica')
+const category = ref('sociedad')
 const status = ref('open')
 const videoUrl = ref('')
 const imageCredit = ref('')
@@ -36,7 +36,7 @@ onMounted(async () => {
     const debate: Debate = await catalog.fetchDebate(id.value)
     title.value = debate.title
     description.value = debate.description ?? ''
-    category.value = debate.category ?? 'politica'
+    category.value = debate.category ?? 'sociedad'
     status.value = debate.status
     videoUrl.value = debate.video_url ?? ''
     imageCredit.value = debate.image_credit ?? ''

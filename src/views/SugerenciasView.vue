@@ -19,7 +19,7 @@ const mine = ref<Suggestion[]>([])
 const form = reactive({
   title: '',
   description: '',
-  category: 'politica',
+  category: 'sociedad',
   target_signatures: 1000,
 })
 
@@ -112,9 +112,8 @@ onMounted(loadMine)
         <MagazinePanel title="Sugerencias">
           <h1>Proponé el próximo debate o votación</h1>
           <p>
-            La agenda no la cierra una dirigencia. Si hay un tema que hay que discutir o una firma que hay
-            que juntar, proponelo acá. El administrador revisa y, si entra, se publica en Debates o
-            Votaciones.
+            La agenda la arma la comunidad. Si hay un tema para discutir o una votación que conviene
+            abrir, proponelo acá. La redacción lo revisa y, si entra, se publica.
           </p>
 
           <p v-if="!auth.isAuthenticated" class="form-lead">

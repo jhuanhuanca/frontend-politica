@@ -21,7 +21,9 @@ async function logout(): Promise<void> {
   <div class="admin-body">
     <div class="admin-shell">
       <aside class="admin-side">
-        <div class="admin-brand">Viejocracia</div>
+        <div class="admin-brand">
+          <img src="/brand/enagenda-logo.png" alt="EnAgenda" />
+        </div>
         <nav class="admin-nav">
           <RouterLink :to="{ name: 'admin-home' }">Resumen</RouterLink>
           <RouterLink :to="{ name: 'admin-debates' }">Debates</RouterLink>
